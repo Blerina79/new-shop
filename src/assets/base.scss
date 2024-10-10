@@ -148,6 +148,14 @@ body{
  }
 }
 
+.btn-success{
+  background-color: var(--success-1);
+  color: var(--text-primary-color);
+  &:hover{
+    background-color: var(--success-2);
+  }
+}
+
 
 
 
