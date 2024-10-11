@@ -6,16 +6,21 @@ import Cart from './components/Cart/Cart.vue';
 import data from './data/product';
 import {computed, reactive} from 'vue';
 import type { ProductInterface } from './interfaces/product.interface';
+import type { ProductCartInterface } from './interfaces';
+import type { FiltersInterface } from './interfaces';
+import { DEFAULT_FILTERS } from './data/filters';
 
 const products = reactive<ProductInterface[]>(data)
 const cart = reactive<ProductInterface[]>([]);
 
 const state = reactive<{
   products: ProductInterface[],
-  cart:ProductInterface[]
+  cart:ProductInterface[],
+  filters:FiltersInterface
 }>({
   products:data,
-  cart:[]
+  cart:[],
+  filters:DEFAULT_FILTERS
 })
 
 function addProductToCart(productId: number):void {

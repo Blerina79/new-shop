@@ -1,3 +1,4 @@
+import type { ProductInterface } from "@/interfaces";
 
 export default [
     {
@@ -6,14 +7,16 @@ export default [
         title:'Acer pro',
         description: 'lorem mpoiuius sbbbbbbb',
         price: 1500 ,
+        category:'desktop'
     },
 
     {
         id:2,
         image:'src/assets/ordi-acer.jpg',
-        title:'Acer pro',
+        title:'Mac pro',
         description: 'lorem mpoiuius sbbbbbbb',
         price: 1500 ,
+        category:'gamer'
     },
 
     { 
@@ -22,14 +25,16 @@ export default [
         title:'Acer pro',
         description: 'lorem mpoiuius sbbbbbbb',
         price: 1500 ,
+        category:'streaming'
     },
 
     {
         id:4,
         image:'src/assets/ordi-acer.jpg',
-        title:'Acer pro',
+        title:'lenovo pro',
         description: 'lorem mpoiuius sbbbbbbb',
-        price: 1500 ,
+        price: 3500 ,
+        category:'gamer'
     },
 
     {
@@ -38,6 +43,7 @@ export default [
         title:'Acer pro',
         description: 'lorem mpoiuius sbbbbbbb',
         price: 1500 ,
+        category:'desktop'
     },
 
     {
@@ -46,6 +52,7 @@ export default [
         title:'Acer pro',
         description: 'lorem mpoiuius sbbbbbbb',
         price: 1500 ,
+        category:'gamer'
     },
 
     {
@@ -53,7 +60,8 @@ export default [
         image:'src/assets/ordi-acer.jpg',
         title:'Acer pro',
         description: 'lorem mpoiuius sbbbbbbb',
-        price: 1500 ,
+        price: 2500 ,
+        category:'streaming'
     },
 
     {
@@ -61,6 +69,7 @@ export default [
         image:'src/assets/ordi-acer.jpg',
         title:'Acer pro',
         description: 'lorem mpoiuius sbbbbbbb',
-        price: 1500 ,
+        price: 5500 ,
+        category:'gamer'
     },
-]
+] as ProductInterface[]
