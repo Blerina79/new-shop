@@ -7,3 +7,9 @@ export interface FiltersInterface{
     category: Category;
 
 }
+
+export interface FilterUpdate{
+    search?: string;
+    priceRange?:[number,number];
+    category?:Category;
+}

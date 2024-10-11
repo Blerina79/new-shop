@@ -20,7 +20,7 @@ const state = reactive<{
 }>({
   products:data,
   cart:[],
-  filters:DEFAULT_FILTERS
+  filters:{...DEFAULT_FILTERS}
 })
 
 function addProductToCart(productId: number):void {
@@ -50,7 +50,35 @@ function removeProductFromCart(productId:number): void{
   }
 }
 
+function updateFilter(filterUpdate: FilterUpdate){
+  if(filterUpdate.search !== undefined){
+     state.filters.search = filterUpdate.search;
+  }else if (filterUpdate.priceRange){
+    state.filters.priceRange = filterUpdate.priceRange;
+  }else if (filterUpdate.category){
+    state.filters.category = filterUpdate.category;
+  }else {
+    state.filters = {...DEFAULT_FILTERS}
+  }
+}
+
+
 const cartEmpty = computed(() => state.cart.length === 0)
+
+const filteredProducts = computed(() =>{
+  return  state.products.filter((product) =>{
+    if(
+      product.title.toLocaleLowerCase().startsWith(state.filters.search.toLocaleLowerCase())&&
+      product.price >= state.filters.priceRange[0] &&
+      product.price <= state.filters.priceRange[1] &&
+      (product.category === state.filters.category || state.filters.category === 'all')
+    ){
+      return true;
+    }else{
+          return false;
+    }
+  })
+})
 
 </script>
 
@@ -59,7 +87,7 @@ const cartEmpty = computed(() => state.cart.length === 0)
     gridEmpty: cartEmpty
   }">
     <TheHeader class="header" />
-    <Shop :products="products" @add-product-to-cart="addProductToCart" class="shop" />
+    <Shop  @update-filter="updateFilter" :products="filteredProducts":filters="state.filters" @add-product-to-cart="addProductToCart" class="shop" />
     <Cart v-if="!cartEmpty" :cart="state.cart" class="cart" @remove-product-from-cart="removeProductFromCart"  />
     <TheFooter class="footer"/>
   </div>
